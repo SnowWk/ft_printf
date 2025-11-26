@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_format.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojin <ojin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 11:03:09 by ojin              #+#    #+#             */
-/*   Updated: 2025/11/25 12:14:04 by ojin             ###   ########.fr       */
+/*   Updated: 2025/11/27 00:08:40 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,15 @@ int	ft_format(char sp, va_list arg)
 	else if (sp == 's')
 		count += ft_putstr(va_arg(arg, char *));
 	else if (sp == 'p')
-	{
-		count += ft_putstr("0x");
-		count += ft_lower_nbr((unsigned long)va_arg(arg, void *), 16);
-	}
+		count += ft_putptr(va_arg(arg, void *));
 	else if (sp == 'd' || sp == 'i')
 		count += ft_lower_nbr((long)va_arg(arg, int), 10);
 	else if (sp == 'u')
-		count += ft_lower_nbr((long)(unsigned int)va_arg(arg, int), 10);
+		count += ft_lower_nbr(va_arg(arg, unsigned int), 10);
 	else if (sp == 'x')
-		count += ft_lower_nbr((long)(unsigned int)va_arg(arg, int), 16);
+		count += ft_lower_nbr(va_arg(arg, unsigned int), 16);
 	else if (sp == 'X')
-		count += ft_upper_nbr((long)(unsigned int)va_arg(arg, int), 16);
+		count += ft_upper_nbr(va_arg(arg, unsigned int), 16);
 	else if (sp == '%')
 		count += ft_putchar('%');
 	else
