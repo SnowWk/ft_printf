@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 00:02:35 by snowp             #+#    #+#             */
-/*   Updated: 2025/11/27 01:11:59 by snowp            ###   ########.fr       */
+/*   Created: 2025/11/27 01:00:57 by snowp             #+#    #+#             */
+/*   Updated: 2025/11/27 01:08:22 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putptr(void *ptr)
+size_t	ft_putnbr(const int n)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
-	if (ptr == NULL)
+	if (n == -2147483648)
 	{
-		count += ft_putstr("(nil)");
+		count += write(1, "-2147483648", 11);
 		return (count);
 	}
-	else
+	if (n < 0)
 	{
-		count += ft_putstr("0x");
-		count += ft_lower_hex((unsigned long)ptr);
+		count += ft_putchar('-');
+		count += ft_putnbr(-n);
+		return (count);
 	}
+	if (n >= 10)
+		count += ft_putnbr(n / 10);
+	count += ft_putchar((n % 10) + '0');
 	return (count);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojin <ojin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 10:44:13 by ojin              #+#    #+#             */
-/*   Updated: 2025/11/21 10:47:50 by ojin             ###   ########.fr       */
+/*   Updated: 2025/11/27 00:57:37 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putchar(size_t	c)
+size_t	ft_putchar(const char c)
 {
 	return (write(1, &c, 1));
 }

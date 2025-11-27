@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putuns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 00:02:35 by snowp             #+#    #+#             */
-/*   Updated: 2025/11/27 01:11:59 by snowp            ###   ########.fr       */
+/*   Created: 2025/11/27 01:05:24 by snowp             #+#    #+#             */
+/*   Updated: 2025/11/27 01:08:26 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putptr(void *ptr)
+size_t	ft_putuns(const unsigned int n)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
-	if (ptr == NULL)
-	{
-		count += ft_putstr("(nil)");
-		return (count);
-	}
-	else
-	{
-		count += ft_putstr("0x");
-		count += ft_lower_hex((unsigned long)ptr);
-	}
+	if (n >= 10)
+		count += ft_putuns(n / 10);
+	count += ft_putchar((n % 10) + '0');
 	return (count);
 }

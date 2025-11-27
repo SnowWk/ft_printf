@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_upper_nbr.c                                     :+:      :+:    :+:   */
+/*   ft_upper_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojin <ojin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 10:45:22 by ojin              #+#    #+#             */
-/*   Updated: 2025/11/21 11:02:34 by ojin             ###   ########.fr       */
+/*   Updated: 2025/11/27 01:12:33 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_upper_nbr(long n, int base)
+size_t	ft_upper_hex(const unsigned int n)
 {
-	int		count;
+	size_t	count;
 	char	*hex;
 
+	count = 0;
 	hex = "0123456789ABCDEF";
-	if (n < 0)
-	{
-		write (1, "-", 1);
-		return (ft_upper_nbr(-n, base) + 1);
-	}
-	else if (n < base)
-		return (ft_putchar(hex[n]));
-	else
-	{
-		count = ft_upper_nbr(n / base, base);
-		return (count + ft_upper_nbr(n % base, base));
-	}
+	if (n >= 16)
+		count += ft_upper_hex(n / 16);
+	count += ft_putchar(hex[n % 16]);
+	return (count);
 }

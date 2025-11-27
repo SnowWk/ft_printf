@@ -6,11 +6,11 @@
 #    By: snowp <snowp@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/27 00:09:37 by snowp             #+#    #+#              #
-#    Updated: 2025/11/27 00:11:16 by snowp            ###   ########.fr        #
+#    Updated: 2025/11/27 01:10:14 by snowp            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c ft_format.c ft_putchar.c ft_putstr.c ft_lower_nbr.c ft_upper_nbr.c ft_putptr.c
+SRCS = ft_printf.c ft_putchar.c ft_putuns.c ft_putnbr.c ft_putstr.c ft_lower_hex.c ft_upper_hex.c ft_putptr.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
