@@ -6,21 +6,21 @@
 /*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:10:49 by ojin              #+#    #+#             */
-/*   Updated: 2025/11/27 01:11:11 by snowp            ###   ########.fr       */
+/*   Updated: 2025/11/27 01:21:46 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	size_t	ft_format(char sp, va_list arg)
+static	size_t	ft_format(const char sp, va_list arg)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
 	if (sp == 'c')
 		count += ft_putchar(va_arg(arg, int));
 	else if (sp == 's')
-		count += ft_putstr(va_arg(arg, char *));
+		count += ft_putstr(va_arg(arg, const char *));
 	else if (sp == 'p')
 		count += ft_putptr(va_arg(arg, void *));
 	else if (sp == 'd' || sp == 'i')
@@ -38,7 +38,7 @@ static	size_t	ft_format(char sp, va_list arg)
 	return (count);
 }
 
-size_t	ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	va_list	arg;
 	int		res;

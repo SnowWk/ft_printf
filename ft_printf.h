@@ -6,7 +6,7 @@
 /*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:09:18 by ojin              #+#    #+#             */
-/*   Updated: 2025/11/27 01:11:45 by snowp            ###   ########.fr       */
+/*   Updated: 2025/11/27 01:21:36 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-size_t		ft_printf(const char *fmt, ...);
+int			ft_printf(const char *fmt, ...);
 size_t		ft_putchar(const char c);
 size_t		ft_putstr(const char *str);
 size_t		ft_putnbr(const int n);
