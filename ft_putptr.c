@@ -6,26 +6,29 @@
 /*   By: snowp <snowp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 00:02:35 by snowp             #+#    #+#             */
-/*   Updated: 2025/11/27 01:24:28 by snowp            ###   ########.fr       */
+/*   Updated: 2025/11/27 01:36:31 by snowp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putptr(void *ptr)
+static	size_t	ft_puthex(const unsigned long n)
 {
-	int	count;
+	size_t	count;
+	char	*hex;
 
 	count = 0;
-	if (ptr == NULL)
-	{
-		count += ft_putstr("(nil)");
-		return (count);
-	}
-	else
-	{
-		count += ft_putstr("0x");
-		count += ft_lower_hex((unsigned long)ptr);
-	}
+	hex = "0123456789abcdef";
+	if (n >= 16)
+		count += ft_puthex(n / 16);
+	count += ft_putchar(hex[n % 16]);
 	return (count);
+}
+
+size_t	ft_putptr(void *ptr)
+{
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	ft_putstr("0x");
+	return (ft_puthex((unsigned long)ptr) + 2);
 }
